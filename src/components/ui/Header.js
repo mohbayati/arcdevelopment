@@ -110,12 +110,15 @@ const StyledListItemText = styled(ListItemText)(({ theme }) => ({
   ...theme.typography.tab,
   opacity: 0.7,
 }));
-export default function Header(props) {
+export default function Header({
+  selectedIndex,
+  setSelectedIndex,
+  value,
+  setValue,
+}) {
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("lg"));
 
