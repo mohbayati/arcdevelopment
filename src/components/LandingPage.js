@@ -1,7 +1,29 @@
-import { Button, Grid, Typography, useTheme } from "@mui/material";
+import {
+  Button,
+  Grid,
+  Typography,
+  useTheme,
+  styled,
+  useMediaQuery,
+} from "@mui/material";
 import Lottie from "react-lottie";
 import animationData from "../animations/landinganimation/data";
 import ButtonArrow from "../components/ButtonArrow";
+import customSoftwareIcon from "../assets/Custom Software Icon.svg";
+import mobileAppsIcon from "../assets/mobileIcon.svg";
+import websitesIcon from "../assets/websiteIcon.svg";
+
+const SpacialText = styled("span")(({ theme }) => ({
+  color: theme.palette.common.orange,
+  fontFamily: "Pacifico",
+}));
+
+const StyledIcon = styled("img")(({ theme }) => ({
+  marginLeft: "2em",
+  [theme.breakpoints.down("sm")]: {
+    marginLeft: 0,
+  },
+}));
 
 export default function LandingPage() {
   const defaultOptions = {
@@ -13,6 +35,7 @@ export default function LandingPage() {
     },
   };
   const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Grid
       container
@@ -24,6 +47,7 @@ export default function LandingPage() {
       }}
     >
       <Grid item>
+        {/*----------Hero Block-----------*/}
         <Grid
           container
           justifyContent="flex-end"
@@ -54,9 +78,9 @@ export default function LandingPage() {
                     ...theme.typography.estimate,
                     backgroundColor: theme.palette.common.orange,
                     borderRadius: 50,
-                    height: 45,
-                    width: 145,
-                    marginRight: 10,
+                    height: "45px",
+                    width: "145px",
+                    marginRight: "40px",
                     "&:hover": {
                       backgroundColor: theme.palette.secondary.light,
                     },
@@ -70,16 +94,10 @@ export default function LandingPage() {
                 <Button
                   variant="outlined"
                   sx={(theme) => ({
-                    borderColor: theme.palette.common.blue,
-                    color: theme.palette.common.blue,
-                    borderWidth: 2,
-                    textTransform: "none",
-                    borderRadius: 50,
-                    fontFamily: "Roboto",
-                    fontWeight: "bold",
+                    ...theme.typography.learnButton,
                     fontSize: "0.9rem",
-                    height: 45,
-                    width: 145,
+                    height: "45px",
+                    width: "145px",
                   })}
                 >
                   <span style={{ marginRight: 10 }}>Learn More</span>
@@ -106,6 +124,169 @@ export default function LandingPage() {
             }}
           >
             <Lottie options={defaultOptions} height={"100%"} width={"100%"} />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        {/*----------Services Block-----------*/}
+        <Grid
+          container
+          direction="row"
+          sx={{
+            mt: "12em",
+            [theme.breakpoints.down("md")]: {
+              padding: 2,
+            },
+          }}
+          justifyContent={matches ? "center" : undefined}
+        >
+          <Grid
+            item
+            sx={{
+              ml: matches ? 0 : "5em",
+              textAlign: matches ? "center" : undefined,
+            }}
+          >
+            <Typography variant="h4">Custom Software Development</Typography>
+            <Typography variant="subtitle1" sx={{ mb: "1em" }}>
+              Save Energy. Save Time. Save Money.
+            </Typography>
+            <Typography variant="subtitle1">
+              Complete digital solutions, from investigation to{" "}
+              <SpacialText>celebration</SpacialText>
+            </Typography>
+            <Button
+              variant="outlined"
+              sx={(theme) => ({
+                ...theme.typography.learnButton,
+                fontSize: "0.7rem",
+                height: "35px",
+                padding: "5px",
+                [theme.breakpoints.down("md")]: {
+                  marginBottom: "2em",
+                },
+              })}
+            >
+              <span style={{ marginRight: 10 }}>Learn More</span>
+              <ButtonArrow
+                width={10}
+                height={10}
+                fill={theme.palette.common.blue}
+              ></ButtonArrow>
+            </Button>
+          </Grid>
+          <Grid item>
+            <StyledIcon alt="custom software icon" src={customSoftwareIcon} />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        {/*----------iOS/Android Block--------*/}
+        <Grid
+          container
+          direction="row"
+          sx={{
+            mt: "12em",
+            [theme.breakpoints.down("md")]: {
+              padding: 2,
+            },
+          }}
+          justifyContent={matches ? "center" : "flex-end"}
+        >
+          <Grid
+            item
+            sx={{
+              textAlign: matches ? "center" : undefined,
+            }}
+          >
+            <Typography variant="h4">iOS/Android App Development</Typography>
+            <Typography variant="subtitle1" sx={{ mb: "1em" }}>
+              Extend Functionality. Extend Access. Increase Engagement.
+            </Typography>
+            <Typography variant="subtitle1">
+              Increase your web experience or create a standalone App{" "}
+              {matches ? null : <br />}with either mobile platform.
+              <SpacialText>celebration</SpacialText>
+            </Typography>
+            <Button
+              variant="outlined"
+              sx={(theme) => ({
+                ...theme.typography.learnButton,
+                fontSize: "0.7rem",
+                height: "35px",
+                padding: "5px",
+                [theme.breakpoints.down("md")]: {
+                  marginBottom: "2em",
+                },
+              })}
+            >
+              <span style={{ marginRight: 10 }}>Learn More</span>
+              <ButtonArrow
+                width={10}
+                height={10}
+                fill={theme.palette.common.blue}
+              ></ButtonArrow>
+            </Button>
+          </Grid>
+          <Grid
+            item
+            sx={{
+              mr: matches ? 0 : "5em",
+            }}
+          >
+            <StyledIcon alt="mobile icon" src={mobileAppsIcon} />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        {/*----------Websites Block-----------*/}
+        <Grid
+          container
+          direction="row"
+          sx={{
+            mt: "12em",
+            [theme.breakpoints.down("md")]: {
+              padding: 2,
+            },
+          }}
+          justifyContent={matches ? "center" : undefined}
+        >
+          <Grid
+            item
+            sx={{
+              ml: matches ? 0 : "5em",
+              textAlign: matches ? "center" : undefined,
+            }}
+          >
+            <Typography variant="h4">Website Development</Typography>
+            <Typography variant="subtitle1" sx={{ mb: "1em" }}>
+              Reach More. Discover More. Sell More.
+            </Typography>
+            <Typography variant="subtitle1">
+              Optimized for Search Engines, build for speed.
+            </Typography>
+            <Button
+              variant="outlined"
+              sx={(theme) => ({
+                ...theme.typography.learnButton,
+                fontSize: "0.7rem",
+                height: "35px",
+                padding: "5px",
+                [theme.breakpoints.down("md")]: {
+                  marginBottom: "2em",
+                },
+              })}
+            >
+              <span style={{ marginRight: 10 }}>Learn More</span>
+              <ButtonArrow
+                width={10}
+                height={10}
+                fill={theme.palette.common.blue}
+              ></ButtonArrow>
+            </Button>
+          </Grid>
+          <Grid item>
+            <StyledIcon alt="websites icon" src={websitesIcon} />
           </Grid>
         </Grid>
       </Grid>

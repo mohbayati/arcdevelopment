@@ -152,7 +152,7 @@ export default function Header({
       selectedIndex: 1,
     },
     {
-      name: "Mobile App Development",
+      name: "iOS/Android Development",
       link: "/mobileapps",
       activeIndex: 1,
       selectedIndex: 2,
@@ -195,7 +195,7 @@ export default function Header({
           break;
       }
     });
-  }, [value, menuOptions, routes, selectedIndex]);
+  }, [value, menuOptions, routes, selectedIndex, setSelectedIndex, setValue]);
   const handleChange = (e, newValue) => {
     setValue(newValue);
   };
