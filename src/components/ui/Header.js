@@ -39,7 +39,7 @@ function ElevationScroll(props) {
 }
 
 const MyComponent = styled("div")(({ theme }) => ({
-  height: theme.mixins.toolbar.minHeight,
+  height: theme.mixins.toolbar.minHeight + 10,
   marginBottom: "3em",
   [theme.breakpoints.down("lg")]: {
     marginBottom: "2em",
@@ -55,6 +55,9 @@ const EstimateButton = styled(Button)(({ theme }) => ({
   marginLeft: "50px",
   marginRight: "50px",
   height: "45px",
+  "&:hover": {
+    backgroundColor: theme.palette.secondary.light,
+  },
 }));
 
 const StyledMenu = styled((props) => (

@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LandingPage from "./LandingPage";
 import Footer from "./ui/Footer";
 import Header from "./ui/Header";
 import Theme from "./ui/Theme";
@@ -19,10 +20,7 @@ function App() {
           setValue={setValue}
         />
         <Routes>
-          <Route
-            path="/"
-            element={<div style={{ height: "1000px" }}>Home</div>}
-          />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/services" element={<div>Services</div>} />
           <Route path="/customsoftware" element={<div>Custom Software</div>} />
           <Route path="/mobileapps" element={<div>Mobile Apps</div>} />

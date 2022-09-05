@@ -33,5 +33,11 @@ export default createTheme({
       minWidth: 10,
       marginLeft: 25,
     },
+    h2: {
+      fontFamily: "RaleWay",
+      fontWeight: 700,
+      fontSize: "2.5rem",
+      color: arcBlue,
+    },
   },
 });
