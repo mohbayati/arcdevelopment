@@ -17,6 +17,8 @@ import websitesIcon from "../assets/websiteIcon.svg";
 import revolutionBackground from "../assets/repeatingBackground.svg";
 import infoBackground from "../assets/infoBackground.svg";
 
+import CallToAction from "./ui/CallToAction";
+
 const SpacialText = styled("span")(({ theme }) => ({
   color: theme.palette.common.orange,
   fontFamily: "Pacifico",
@@ -455,6 +457,10 @@ export default function LandingPage() {
             }}
           />
         </Grid>
+      </Grid>
+      <Grid item>
+        {/*----------Call To Action Block-----------*/}
+        <CallToAction />
       </Grid>
     </Grid>
   );
