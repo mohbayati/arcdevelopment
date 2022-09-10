@@ -191,6 +191,8 @@ export default function Header({
             }
           }
           break;
+        case "/estimate":
+          setValue(5);
         default:
           break;
       }
@@ -219,7 +221,13 @@ export default function Header({
             onMouseOver={route.mouseOver}
           />
         ))}
-        <EstimateButton variant="contained" color="secondary">
+        <EstimateButton
+          component={Link}
+          to="/estimate"
+          variant="contained"
+          color="secondary"
+          onClick={() => setValue(5)}
+        >
           Free Estimate
         </EstimateButton>
         <StyledMenu

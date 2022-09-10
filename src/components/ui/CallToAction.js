@@ -8,8 +8,9 @@ import {
 import ButtonArrow from "../ButtonArrow";
 import background from "../../assets/background.jpg";
 import mobileBackground from "../../assets/mobileBackground.jpg";
+import { Link } from "react-router-dom";
 
-export default function CallToAction() {
+export default function CallToAction({ setValue }) {
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   return (
@@ -54,7 +55,10 @@ export default function CallToAction() {
               justifyContent={matchesMD ? "center" : undefined}
             >
               <Button
+                component={Link}
+                to="/revolution"
                 variant="outlined"
+                onClick={() => setValue(2)}
                 sx={(theme) => ({
                   ...theme.typography.learnButton,
                   fontSize: "0.9rem",
@@ -75,7 +79,10 @@ export default function CallToAction() {
       </Grid>
       <Grid item justifyContent={matchesMD ? "center" : undefined}>
         <Button
+          component={Link}
+          to="/estimate"
           variant="contained"
+          onClick={() => setValue(5)}
           sx={(theme) => ({
             ...theme.typography.estimate,
             borderRadius: 50,

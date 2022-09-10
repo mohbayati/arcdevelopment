@@ -18,6 +18,7 @@ import revolutionBackground from "../assets/repeatingBackground.svg";
 import infoBackground from "../assets/infoBackground.svg";
 
 import CallToAction from "./ui/CallToAction";
+import { Link } from "react-router-dom";
 
 const SpacialText = styled("span")(({ theme }) => ({
   color: theme.palette.common.orange,
@@ -31,7 +32,7 @@ const StyledIcon = styled("img")(({ theme }) => ({
   },
 }));
 
-export default function LandingPage() {
+export default function LandingPage({ setValue, setSelectedIndex }) {
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -66,10 +67,8 @@ export default function LandingPage() {
             sx={{
               minWidth: "25.5em",
               marginLeft: "1em",
-              // [theme.breakpoints.down("md")]: {
-              //   minWidth: "15.5em",
-              // },
-              [theme.breakpoints.down("xs")]: {
+              [theme.breakpoints.down("md")]: {
+                minWidth: "15.5em",
                 marginLeft: 0,
               },
             }}
@@ -80,6 +79,9 @@ export default function LandingPage() {
             <Grid container justifyContent="center">
               <Grid item>
                 <Button
+                  component={Link}
+                  to="/estimate"
+                  onClick={() => setValue(5)}
                   sx={(theme) => ({
                     ...theme.typography.estimate,
                     backgroundColor: theme.palette.common.orange,
@@ -98,7 +100,10 @@ export default function LandingPage() {
               </Grid>
               <Grid item>
                 <Button
+                  component={Link}
+                  to="/revolution"
                   variant="outlined"
+                  onClick={() => setValue(2)}
                   sx={(theme) => ({
                     ...theme.typography.learnButton,
                     fontSize: "0.9rem",
@@ -162,7 +167,13 @@ export default function LandingPage() {
               <SpacialText>celebration</SpacialText>
             </Typography>
             <Button
+              component={Link}
+              to="/customsoftware"
               variant="outlined"
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(1);
+              }}
               sx={(theme) => ({
                 ...theme.typography.learnButton,
                 fontSize: "0.7rem",
@@ -215,7 +226,13 @@ export default function LandingPage() {
               <SpacialText>celebration</SpacialText>
             </Typography>
             <Button
+              component={Link}
+              to="/mobileapps"
               variant="outlined"
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(2);
+              }}
               sx={(theme) => ({
                 ...theme.typography.learnButton,
                 fontSize: "0.7rem",
@@ -272,7 +289,13 @@ export default function LandingPage() {
               Optimized for Search Engines, build for speed.
             </Typography>
             <Button
+              component={Link}
+              to="/websites"
               variant="outlined"
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(2);
+              }}
               sx={(theme) => ({
                 ...theme.typography.learnButton,
                 fontSize: "0.7rem",
@@ -301,7 +324,16 @@ export default function LandingPage() {
           container
           alignItems="center"
           justifyContent="center"
-          sx={{ height: "100em", marginTop: "12em" }}
+          sx={{
+            height: "100em",
+            marginTop: "12em",
+            backgroundImage: `url(${revolutionBackground})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            //height: "100%",
+            width: "100%",
+          }}
         >
           <Card
             sx={(theme) => ({
@@ -332,6 +364,11 @@ export default function LandingPage() {
                     for revolution.
                   </Typography>
                   <Button
+                    component={Link}
+                    to="/revolution"
+                    onClick={() => {
+                      setValue(2);
+                    }}
                     variant="outlined"
                     sx={(theme) => ({
                       ...theme.typography.learnButton,
@@ -351,16 +388,6 @@ export default function LandingPage() {
               </Grid>
             </CardContent>
           </Card>
-          <div
-            style={{
-              backgroundImage: `url(${revolutionBackground})`,
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              height: "100%",
-              width: "100%",
-            }}
-          />
         </Grid>
       </Grid>
 
@@ -369,14 +396,21 @@ export default function LandingPage() {
         <Grid
           container
           direction="row"
-          sx={{ height: "80em" }}
+          sx={{
+            height: "80em",
+            backgroundImage: `url(${infoBackground})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            //height: "100%",
+            width: "100%",
+          }}
           alignItems="center"
         >
           <Grid
             item
             container
             sx={{
-              position: "absolute",
               textAlign: matches ? "center" : "inherit",
             }}
             direction={matches ? "column" : "row"}
@@ -390,7 +424,12 @@ export default function LandingPage() {
                 <Typography variant="subtitle2">Let's get personal.</Typography>
                 <Grid item>
                   <Button
+                    component={Link}
+                    to="/about"
                     variant="outlined"
+                    onClick={() => {
+                      setValue(3);
+                    }}
                     sx={(theme) => ({
                       ...theme.typography.learnButton,
                       fontSize: "0.9rem",
@@ -425,6 +464,9 @@ export default function LandingPage() {
                 <Typography variant="subtitle2">Say hello!</Typography>
                 <Grid item>
                   <Button
+                    component={Link}
+                    to="/contact"
+                    onClick={() => setValue(4)}
                     variant="outlined"
                     sx={(theme) => ({
                       ...theme.typography.learnButton,
@@ -446,21 +488,11 @@ export default function LandingPage() {
               </Grid>
             </Grid>
           </Grid>
-          <div
-            style={{
-              backgroundImage: `url(${infoBackground})`,
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              height: "100%",
-              width: "100%",
-            }}
-          />
         </Grid>
       </Grid>
       <Grid item>
         {/*----------Call To Action Block-----------*/}
-        <CallToAction />
+        <CallToAction setValue={setValue} />
       </Grid>
     </Grid>
   );

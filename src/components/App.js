@@ -20,7 +20,15 @@ function App() {
           setValue={setValue}
         />
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route
+            path="/"
+            element={
+              <LandingPage
+                setSelectedIndex={setSelectedIndex}
+                setValue={setValue}
+              />
+            }
+          />
           <Route path="/services" element={<div>Services</div>} />
           <Route path="/customsoftware" element={<div>Custom Software</div>} />
           <Route path="/mobileapps" element={<div>Mobile Apps</div>} />
